@@ -60,8 +60,13 @@ $admin = mysqli_fetch_assoc($query);
     
     <!-- Sweetalert2 -->
     <link href="assets/vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    
+    <!-- Leaflet Routing Mechine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="assets/js/leaflet/leaflet-routing-machine.css" />
     <style>
-        #map { margin-top: 20px; width: 100%; height: 400px; }
+        #map { margin-top: 10px; width: 100%; height: 400px; }
+        #map2 { margin-top: 10px; width: 100%; height: 400px; }
     </style>
         
 </head>

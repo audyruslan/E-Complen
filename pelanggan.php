@@ -25,9 +25,10 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama lengkap</th>
-                                    <th>Password</th>
-                                    <th>Alamat</th>
+                                    <th>Nomor Telepon</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Keluhan</th>
+                                    <th>Type</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -38,10 +39,20 @@
                                 ?>
                                     <tr>
                                         <td><?= $i; ?></td>
+                                        <td><?= $row['no_meter']; ?></td>
                                         <td><?= $row['nama']; ?></td>
-                                        <td><?= $row['pass']; ?></td>
-                                        <td><?= $row['alamat']; ?></td>
+                                        <td><?= $row['keluhan']; ?></td>
+                                        <?php 
+                                        if($row['type'] == "Selesai"){
+                                        ?>
+                                        <td><span class="badge badge-success"><?= $row['type']; ?></span></td>
+                                        <?php 
+                                            } else {
+                                        ?>
+                                        <td><span class="badge badge-danger"><?= $row['type']; ?></span></td>
+                                        <?php } ?>
                                         <td>
+                                            <a class="btn btn-primary btn-sm ubah" target="_blank" href="maps_pelanggan.php?id=<?= $row["id"]; ?>"><i class="fas fa-map-marked-alt"></i> </a>
                                             <a class="btn btn-success btn-sm ubah" data-toggle="modal" data-target="#EditModal<?= $row["id"]; ?>"><i class="fas fa-edit"></i> </a>
                                             <a class="btn btn-danger btn-sm hapus_pelanggan" href="pelanggan/hapus.php?id=<?= $row["id"]; ?>"><i class="fas fa-trash"></i></a>
                                         </td>

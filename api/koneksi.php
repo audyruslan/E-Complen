@@ -1,8 +1,9 @@
-<?php
-	$server		= "localhost"; // sesuaikan alamat server anda
-	$user		= "root"; // sesuaikan user web server anda
-	$password	= ""; // sesuaikan password web server anda
-	$database	= "complen_db"; // sesuaikan database web server anda
-		
-	$con = mysqli_connect($server,$user,$password,$database);
+<?php 
+ define('HOST','localhost');
+ define('USER','root');
+ define('PASS','');
+ define('DB','complen_db');
+ 
+ //membuat koneksi dengan database
+ $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 ?>

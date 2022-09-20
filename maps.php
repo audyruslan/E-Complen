@@ -13,49 +13,34 @@
             <p class="mb-4">Peta petugas dapat melihat titik lokasi gangguan Listrik Padam yang telah dikirim oleh pelanggan, pada titik peta yang berwarna merah merupakan titik lokasi kerusakan, maka petugas dapat melihat jalur terpendek menuju lokasi gangguan tersebut.</p>
 
             <!-- Content Row -->
-            
-            <div class="row">
-                <div class="col-md-12">
-                     
- 
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label">
-                                Awal
-                            </label>
-                            <div class="col">
-                                <select class="form-control" id="start">
-                                    <option value="Palu">Palu</option>
-                                    <option value="Sigi">Sigi</option>
-                                    <option value="Donggala">Donggala</option>
-                                </select>
-                            </div>
-                            <label class="col-sm-2 col-form-label">
-                                Tujuan
-                            </label>
-                            <div class="col">
-                                <select class="form-control" id="finish">
-                                    <option value="Palu">Palu</option>
-                                    <option value="Sigi">Sigi</option>
-                                    <option value="Donggala">Donggala</option>
-                                </select>
-                            </div>
-                        </div>
-                        <span id="error">
-                        </span>
-                    </br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div id="map" class="card">
+            <!-- <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="lokasi_kantor">Lokasi Kantor</label>
+                        <input type="text" class="form-control" name="lokasi_kantor" id="lokasi_kantor" placeholder="Lokasi Kantor" value="PT. Telkom Cabang Palu" readonly>
                     </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="card">
-                    <div id="panel" class="card-block" style="overflow-y: scroll;height: 400px;">
-                     
-                  </div>
+                    <div class="form-group">
+                        <label for="lokasi_pelanggan">Lokasi Pelanggan</label>
+                        <select class="form-control" name="lokasi_pelanggan" id="lokasi_pelanggan">
+                            <option value="">--Silahkan Pilih--</option>
+                            <?php 
+                                $sql = mysqli_query($conn, "SELECT * FROM tb_pelanggan");
+                                while ($row = mysqli_fetch_assoc($sql)) {
+                            ?>
+                            <option data-lat="<?= $row['lat']; ?>" data-lng="<?= $row['lng']; ?>"><?= $row['no_meter']; ?></option>
+                            <?php 
+                                }
+                            ?>
+                        </select>
                     </div>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="map"></div>
                 </div>
             </div>
 

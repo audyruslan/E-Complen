@@ -5,26 +5,21 @@
  </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Ingin Keluar?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Pilih Tombol "Keluar" jika ingin melanjtukan.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="login.html">Keluar</a>
                 </div>
             </div>
         </div>
@@ -53,6 +48,13 @@
     <!-- jquery-validation -->
     <script src="assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="assets/vendor/jquery-validation/additional-methods.min.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="assets/js/leaflet/leaflet-routing-machine.js"></script>
+
 
     <?php
     if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
@@ -115,69 +117,105 @@
 
         });
     </script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT23Hn4kTqEuF8ix4ZutQOhsLlc6J4Hlw&callback=initMap"></script>
-      <script>
-        function initMap() {
-        var markerArray = [];
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-         
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
-          center: {lat: -0.8364268, lng: 119.891505}
-        });
-        var stepDisplay = new google.maps.InfoWindow;
-        directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('panel'));
-    calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
-        var onChangeHandler = function() {
-          calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
-        };
- 
-        document.getElementById('start').addEventListener('change', onChangeHandler);
-        document.getElementById('finish').addEventListener('change', onChangeHandler);
-      }
- 
-      function calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map) {
-       for (var i = 0; i < markerArray.length; i++) {
-          markerArray[i].setMap(null);
-        }
-        directionsService.route({
-          origin: document.getElementById('start').value,
-          destination: document.getElementById('finish').value,
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-            showSteps(response, markerArray, stepDisplay, map);
-            $("#error").empty();
-            $("#error").removeClass();
-          } else {
-           $("#error").addClass("badge badge-danger");
-            $("#error").text("Tidak dapat menemukan nama lokasi, status error: "+status);
+
+    <!-- Maps Semua Pelanggan -->
+    <script>
+      var map = L.map('map').setView([-0.899629585486179, 119.87738334998697], 13); 
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      L.marker([-0.8957447825867245, 119.88037353063179]).addTo(map);
+
+      // Mengambil Data Latitude dan Longitude dari Database untuk ditampilkan di Marker dan Popup.
+      <?php 
+          $sql = mysqli_query($conn, "SELECT * FROM tb_pelanggan");
+          while ($row = mysqli_fetch_assoc($sql)) {
+      ?>
+        L.marker([<?= $row['lat']; ?>, <?= $row['lng']; ?>]).addTo(map).bindPopup("No. Meter : <?= $row['no_meter']; ?><br>"+
+                                                                                  "Nama Pelanggan : <?= $row['nama']; ?><br>"+
+                                                                                  "<button class='btn btn-sm btn-primary' onclick='return keSini(<?= $row['lat']; ?>, <?= $row['lng']; ?>)'>Ke Sini</button>");
+      <?php 
           }
-        });
+      ?>
+
+      // Menampilkan Da
+      var control = L.Routing.control({
+          waypoints: [
+            L.latLng(-0.8957447825867245, 119.88037353063179),
+            L.latLng(-0.8358958153422379, 119.89369369997439)
+          ],
+          routeWhileDragging: true
+        }).addTo(map);
+
+      // Fungsi untuk Mendapatkan Rute 
+      function keSini(lat, lng){
+        var latLng=L.latLng(lat, lng);
+        control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
       }
- 
-      function showSteps(directionResult, markerArray, stepDisplay, map) {
-        var myRoute = directionResult.routes[0].legs[0];
-        for (var i = 0; i < myRoute.steps.length; i++) {
-          var marker = markerArray[i] = markerArray[i] || new google.maps.Marker;
-          marker.setMap(map);
-          marker.setPosition(myRoute.steps[i].start_location);
-          attachInstructionText(
-              stepDisplay, marker, myRoute.steps[i].instructions, map);
-        }
-      }
- 
-      function attachInstructionText(stepDisplay, marker, text, map) {
-        google.maps.event.addListener(marker, 'click', function() {
-          stepDisplay.setContent(text);
-          stepDisplay.open(map, marker);
-        });
-      }
+
     </script>
 
+    <!-- Maps Detail Pelanggan -->
+    <script>
+      var map2 = L.map('map2').setView([-0.899629585486179, 119.87738334998697], 8); 
+      var latLng1 = L.latLng(-0.8957447825867245, 119.88037353063179);
+      <?php 
+          $id_lokasi = $_GET["id"];
+          $sql = mysqli_query($conn, "SELECT * FROM tb_pelanggan WHERE id = '$id_lokasi'");
+          while ($row = mysqli_fetch_assoc($sql)) {
+      ?>
+          var latLng2 = L.latLng(<?= $row['lat']; ?>, <?= $row['lng']; ?>);
+      <?php 
+          }
+      ?>
+      var wp1 = new L.Routing.Waypoint(latLng1);
+      var wp2 = new L.Routing.Waypoint(latLng2);
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map2);
+
+        L.Routing.control({
+          waypoints: [latLng1,latLng2]
+        }).addTo(map2);
+
+        var routeUs = L.Routing.osrmv1();
+        routeUs.route([wp1,wp2], (err,routes) => {
+          if(!err){
+            // Mencari Rute Terpendek dengan membandingkan dua Variabel best dan bestRoute
+
+            // Variabel best adalah jarak default untuk melakukan perbandingan
+            var best = 1000000000000000;
+
+            // Variabel besRoute digunakan untuk menyimpan Nilai Array dari Rute Terdekat
+            // Defaultnya adalah 0, karena Array dimulai dari Angka 0
+            // Jika Arraynya hanya 1, maka Array 0 Adalah Rute yang paling mendekati yang terdekat
+            var bestRoute = 0;
+            for(i in routes){
+              // Membandingkan Apakah totalDistancenya / totalJaraknya lebih kecil dari best 
+              // jika ia, selanjutnya variabel best akan melakukan perbandingan lagi dan jika ada data totalDistance/totalJarak terbaru yang lebih kecil dari yang pertama, atau data sebelumya, hingga menghasilkan data yang paling terkecil dari pembandingnya.
+              // Maka Nilai akan disimpan dalam variabel besRoute sebagai nilai terkecil dan rute terpendek
+              if(routes[i].summary.totalDistance < best){
+                // bestRoutenya adalah rute yang paling terdekat dari hasil perbandingan sebelumnya
+                // Urutan ke-i atau Array-0 yang merupakan indeks pertama dalam Array
+                bestRoute = i;
+                // Nilai bestnya adalah data yang telah dilakukan perbandingan sebelumnya
+                best = routes[i].summary.totalDistance;
+              }
+            }
+            console.log('Rute Terbaik', routes[bestRoute]);
+            L.Routing.line(routes[bestRoute],{
+              styles : [
+                {
+                  color : 'green',
+                  weight : '10'
+                }
+              ]
+            }).addTo(map2);
+          }
+        })
+    </script>
 </body>
 
 </html>
