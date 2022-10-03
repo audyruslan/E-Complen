@@ -1,4 +1,5 @@
 <?php 
+    $title = "Tambah Data Pelanggan - E-Complent";
     require 'layouts/header.php';
     require 'layouts/sidebar.php';
     require 'layouts/navbar.php';

@@ -60,7 +60,7 @@
 
                                     <!-- Edit Modal -->
                                     <div class="modal fade" id="EditModal<?= $row["id"]; ?>" tabindex="-1" role="dialog" aria-labelledby="#EditModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="EditModalLabel">Ubah Data Pelanggan</h5>
@@ -72,16 +72,62 @@
                                                     <div class="modal-body">
                                                         <input type="hidden" name="id" value="<?= $row["id"]; ?>">
                                                         <div class="row">
-                                                            <div class="col">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="no_meter">No. Meter</label>
+                                                                    <input type="text" autocomplete="off" class="form-control" id="no_meter" name="no_meter" value="<?= $row["no_meter"]; ?>" placeholder="No. Meter">
+                                                                </div>
                                                                 <div class="form-group">
                                                                     <label for="nama">Nama Lengkap</label>
                                                                     <input type="text" autocomplete="off" class="form-control" id="nama" name="nama" value="<?= $row["nama"]; ?>" placeholder="Masukkan Lengkap">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="password">Password</label>
+                                                                    <input type="text" class="form-control" name="password" id="password" placeholder="Masukkan Password" value="<?= $row["pass"]; ?>" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="alamat">Alamat</label>
+                                                                    <textarea class="form-control" name="alamat" id="alamat"
+                                                                        placeholder="Alamat Lengkap" required><?= $row["alamat"]; ?></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="latitude">Latitude</label>
+                                                                            <input type="text" class="form-control" name="latitude" id="latitude" placeholder="Latitude" value="<?= $row["lat"]; ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="longitude">Longitude</label>
+                                                                            <input type="text" class="form-control" name="longitude" id="longitude" placeholder="Longitude" value="<?= $row["lng"]; ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="daya">Daya</label>
+                                                                    <input type="text" class="form-control" name="daya" id="daya" placeholder="Masukkan Daya" value="<?= $row["daya"]; ?>" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="type">Type</label>
+                                                                    <select class="form-control" name="type" id="type" required>
+                                                                        <option value="">--Silahkan Pilih--</option>
+                                                                        <option value="Keluhan" <?php if ($row["type"] == "Keluhan") { echo 'selected'; }?> >Keluhan</option>
+                                                                        <option value="Selesai" <?php if ($row["type"] == "Selesai") { echo 'selected'; }?>>Selesai</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="keluhan">Keluhan</label>
+                                                                    <textarea class="form-control" name="keluhan" id="keluhan"
+                                                                        placeholder="Masukkan Keluhan" readonly><?= $row["keluhan"]; ?></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembail</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                                         <button type="submit" name="ubah" class="btn btn-success">Ubah</button>
                                                     </div>
                                                 </form>

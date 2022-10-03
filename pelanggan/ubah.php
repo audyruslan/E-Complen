@@ -7,22 +7,24 @@ function ubah_pelanggan($data)
     global $conn;
     $id = $data["id"];
     $nama = $data['nama'];
-    // $password = $data['password'];
-    // $alamat = $data['alamat'];
-    // $latitude = $data['latitude'];
-    // $longitude = $data['longitude'];
-    // $type = $data['type'];  
-    // $keluhan = $data['keluhan'];
+    $password = $data['password'];
+    $daya = $data['daya'];
+    $alamat = $data['alamat'];
+    $latitude = $data['latitude'];
+    $longitude = $data['longitude'];
+    $type = $data['type'];  
+    $keluhan = $data['keluhan'];
 
     $query = "UPDATE tb_pelanggan
                 SET
 				nama = '$nama'
-				-- pass = '$password',
-				-- alamat = '$alamat',
-				-- lat = '$latitude',
-				-- lng = '$longitude',
-				-- type = '$type',
-				-- keluhan = '$keluhan',
+				pass = '$password',
+				daya = '$daya',
+				alamat = '$alamat',
+				lat = '$latitude',
+				lng = '$longitude',
+				type = '$type',
+				keluhan = '$keluhan',
                 WHERE id = $id
 			";
 
