@@ -14,6 +14,14 @@ function query($query)
     return $rows;
 }
 
+// Hapus Data Keluhan Pelanggan
+function hapus_laporan($id)
+{
+    global $conn;
+    mysqli_query($conn, "DELETE FROM tb_laporan WHERE id = '$id'");
+    return mysqli_affected_rows($conn);
+}
+
 // Hapus Data Pelanggan
 function hapus_pelanggan($id)
 {

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require 'functions.php';
+require 'tgl_indo.php';
 if (!isset($_SESSION["username"])) {
 echo '<script>
             alert("Silahkan Login Terlebih Dauhulu!");

@@ -6,7 +6,7 @@ function tambah_pelanggan($data)
 {
     global $conn;
 
-    $id_pelanggan = $data['id_pelanggan'];
+    $no_hp = $data['no_hp'];
     $nama = $data['nama'];
     $no_meter = $data['no_meter'];
     $password = $data['password'];
@@ -19,7 +19,7 @@ function tambah_pelanggan($data)
 
     $query = "INSERT INTO tb_pelanggan
 				VALUES 
-				('','$id_pelanggan','$no_meter','$nama','$password','$daya','$alamat','$latitude','$longitude','$type','$keluhan')";
+				('','$no_meter','$daya','$nama','$no_hp','$password','$alamat','$latitude','$longitude')";
 
     mysqli_query($conn, $query);
 

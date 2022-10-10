@@ -94,7 +94,7 @@
 
         });
 
-        // Hapus Data Pelanggan
+        // Hapus Data Administrator
         $(document).on('click', '.hapus_admin', function(e) {
 
         e.preventDefault();
@@ -103,6 +103,29 @@
         Swal.fire({
             title: 'Apakah Anda Yakin?',
             text: "Data Administrator!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus Data!'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+
+        })
+
+        });
+
+         // Hapus Data Laporan Pelanggan
+        $(document).on('click', '.hapus_laporan', function(e) {
+
+        e.preventDefault();
+        var href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Apakah Anda Yakin?',
+            text: "Data Laporan Pelanggan!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

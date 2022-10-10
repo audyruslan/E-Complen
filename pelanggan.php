@@ -25,10 +25,10 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nomor Telepon</th>
+                                    <th>Nomor Meter</th>
                                     <th>Nama Pelanggan</th>
-                                    <th>Keluhan</th>
-                                    <th>Type</th>
+                                    <th>Daya</th>
+                                    <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -41,7 +41,8 @@
                                         <td><?= $i; ?></td>
                                         <td><?= $row['no_meter']; ?></td>
                                         <td><?= $row['nama']; ?></td>
-                                        <td><?= $row['keluhan']; ?></td>
+                                        <td><?= $row['daya']; ?></td>
+                                        <td><?= $row['alamat']; ?></td>
                                         <?php 
                                         if($row['type'] == "Selesai"){
                                         ?>

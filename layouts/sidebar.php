@@ -37,11 +37,11 @@
             </li>
             
             <!-- Nav Item - Laporan -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="laporan.php">
                     <i class="far fa-clipboard"></i>
                     <span>Laporan</span></a>
-            </li> -->
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
