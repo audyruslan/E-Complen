@@ -11,15 +11,13 @@ function tambah_pelanggan($data)
     $no_meter = $data['no_meter'];
     $password = $data['password'];
     $daya = $data['daya'];
-    $alamat = $data['alamat'];
     $latitude = $data['latitude'];
     $longitude = $data['longitude'];
-    $type = $data['type'];
-    $keluhan = $data['keluhan'];
+    $alamat = $data['alamat'];
 
     $query = "INSERT INTO tb_pelanggan
 				VALUES 
-				('','$no_meter','$daya','$nama','$no_hp','$password','$alamat','$latitude','$longitude')";
+				('','$no_meter','$daya','$nama','$no_hp','$password','$latitude','$longitude','$alamat')";
 
     mysqli_query($conn, $query);
 

@@ -43,15 +43,6 @@
                                         <td><?= $row['nama']; ?></td>
                                         <td><?= $row['daya']; ?></td>
                                         <td><?= $row['alamat']; ?></td>
-                                        <?php 
-                                        if($row['type'] == "Selesai"){
-                                        ?>
-                                        <td><span class="badge badge-success"><?= $row['type']; ?></span></td>
-                                        <?php 
-                                            } else {
-                                        ?>
-                                        <td><span class="badge badge-danger"><?= $row['type']; ?></span></td>
-                                        <?php } ?>
                                         <td>
                                             <a class="btn btn-primary btn-sm ubah" target="_blank" href="maps_pelanggan.php?id=<?= $row["id"]; ?>"><i class="fas fa-map-marked-alt"></i> </a>
                                             <a class="btn btn-success btn-sm ubah" data-toggle="modal" data-target="#EditModal<?= $row["id"]; ?>"><i class="fas fa-edit"></i> </a>

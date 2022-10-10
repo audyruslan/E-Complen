@@ -9,22 +9,18 @@ function ubah_pelanggan($data)
     $nama = $data['nama'];
     $password = $data['password'];
     $daya = $data['daya'];
-    $alamat = $data['alamat'];
     $latitude = $data['latitude'];
     $longitude = $data['longitude'];
-    $type = $data['type'];  
-    $keluhan = $data['keluhan'];
+    $alamat = $data['alamat'];
 
     $query = "UPDATE tb_pelanggan
                 SET
-				nama = '$nama'
+				nama = '$nama',
 				pass = '$password',
 				daya = '$daya',
-				alamat = '$alamat',
 				lat = '$latitude',
 				lng = '$longitude',
-				type = '$type',
-				keluhan = '$keluhan',
+				alamat = '$alamat'
                 WHERE id = $id
 			";
 

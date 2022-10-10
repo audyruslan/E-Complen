@@ -13,22 +13,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="id_pelanggan">ID Pelanggan</label>
-                <input type="text" class="form-control" name="id_pelanggan" id="id_pelanggan" placeholder="ID Pelanggan" required>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="no_meter">No. Meter</label>
-                        <input type="text" class="form-control" name="no_meter" id="no_meter" placeholder="Masukkan No.Meter" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="daya">Daya</label>
-                        <input type="text" class="form-control" name="daya" id="daya" placeholder="Masukkan Daya" required>
-                    </div>
-                </div>
+                <label for="no_hp">No.Hp</label>
+                <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder="No.Handphone" required>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -54,6 +40,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label for="no_meter">No. Meter</label>
+                        <input type="text" class="form-control" name="no_meter" id="no_meter" placeholder="Masukkan No.Meter" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="daya">Daya</label>
+                        <input type="text" class="form-control" name="daya" id="daya" placeholder="Masukkan Daya" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label for="latitude">Latitude</label>
                         <input type="text" class="form-control" name="latitude" id="latitude" placeholder="Latitude" required>
                     </div>
@@ -64,19 +64,6 @@
                         <input type="text" class="form-control" name="longitude" id="longitude" placeholder="Longitude" required>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="type">Type</label>
-                <select class="form-control" name="type" id="type" required>
-                    <option value="">--Silahkan Pilih--</option>
-                    <option value="Keluhan">Keluhan</option>
-                    <option value="Selesai">Selesai</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="keluhan">Keluhan</label>
-                <textarea class="form-control" name="keluhan" id="keluhan" cols="30" rows="6"
-                    placeholder="Masukkan Keluhan" required></textarea>
             </div>
         </div>
     </div>
