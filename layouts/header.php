@@ -14,6 +14,15 @@ $user = $_SESSION["username"];
 $query = mysqli_query($conn, "SELECT * FROM tb_users WHERE username = '$user'");
 $admin = mysqli_fetch_assoc($query);
 }
+
+//Total Data Lokasi
+$totLokasi = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_pelanggan"));
+//Total Data Pelanggan
+$totPelanggan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_pelanggan"));
+//Total Data Riwayat Keluhan
+$totRiwayat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_laporan"));
+//Total Data Admin
+$totAdmin = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_users"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
