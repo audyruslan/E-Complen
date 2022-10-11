@@ -18,7 +18,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
 }
 
 if (isset($_SESSION["login"])) {
-    header("Location: index.php");
+    header("Location: admin.php");
 }
 
 
@@ -47,7 +47,7 @@ if (isset($_POST["login"])) {
                 setcookie('key', hash('sha256', $row['username']), time() + 60);
             }
 
-            header("Location: index.php");
+            header("Location: admin.php");
         } else {
             $_SESSION['error'] = "<strong>Password Salah!</strong>";
         }

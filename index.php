@@ -1,102 +1,179 @@
-<?php 
-    $title = "Dashboard Administrator - E-Complent";
-    require 'layouts/header.php';
-    require 'layouts/sidebar.php';
-    require 'layouts/navbar.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <!-- Content Row -->
-        <div class="row">
+  <title>E-Complaint - Layanan Pengaduan Gangguan Listrik</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Lokasi Pelanggan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">120 Titik</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-2x fa-map-marked-alt text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Data Pelanggan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">120 Pelanggan</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-solid fa-users fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> ID Pelanggan
-                                </div>
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">120 ID Pelanggan</div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    No.Hp pelanggan</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">No.HP</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-duotone fa-mobile fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Vendor CSS Files -->
+  <link href="dist/vendor/aos/aos.css" rel="stylesheet">
+  <link href="dist/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="dist/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="dist/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="dist/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="dist/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="dist/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="dist/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html"><span>E-Complaint</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="dist/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
     </div>
-    <!-- /.container-fluid -->
+  </header><!-- End Header -->
 
-<?php 
-    require 'layouts/footer.php'; ?>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out">
+            <h1>Layanan Pengaduan Gangguan Listrik Bersama <span>E-Complaint</span></h1>
+            <h2>Melayani Gangguan Listrik Anda dengan Cepat.</h2>
+            <div class="text-center text-lg-start">
+              <a target="_blank" href="login.php" class="btn-get-started scrollto">Mulai</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="dist/img/hero.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+            <a href="https://www.youtube.com/watch?v=CvJ5z6SsTnc" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+            <h3>Mengapa Harus Layanan Kami.?</h3>
+            <p>E-Complaint Merupakan Layanan Pengaduan Gangguan Listrik, dengan kami Gangguan Listrik Anda akan kami proses dengan Cepat. Kami juga memberikan Pelayanan yang Aman dan Nyaman.</p>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon"><i class="bx bxs-hard-hat"></i></div>
+              <h4 class="title"><a href="">Layanan</a></h4>
+              <p class="description">Menangani Keluhan Gangguan Listrik Anda. Kami memberikan Edukasi Terkait Hal yang mengakibatkan terjadinya Gangguan pada Benda Electrik.</p>
+            </div>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon"><i class="bx bxs-timer"></i></div>
+              <h4 class="title"><a href="">Cepat</a></h4>
+              <p class="description">Pengaduan akibat Gangguan Listrik, akan kami tangani dengan Sigap dan Tepat. Tentunya untuk keselamatan dan mencegah terjadinya Masalah Besar.</p>
+            </div>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon"><i class="bx bxs-comment"></i></div>
+              <h4 class="title"><a href="">Respon</a></h4>
+              <p class="description">Memberikan penganganan dalam kondisi apapun, untuk pelayanan yang Terbaik. karena prioritas Anda adalah Tanggung jawab Kami.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>E-Complaint</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Build by <a href="https://www.banua-software.com/">Banua Software</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="dist/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="dist/vendor/aos/aos.js"></script>
+  <script src="dist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="dist/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="dist/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="dist/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="dist/js/main.js"></script>
+
+</body>
+
+</html>
