@@ -2,13 +2,14 @@
 	//Importing database    
     require '../functions.php';
 	
-	//Membuat SQL Query dengan pegawai yang ditentukan secara spesifik sesuai ID
+	//Membuat SQL Query dengan pegawai yang ditentukan secara spesifik sesuai ID_pelanggan
 	$sql = "SELECT * FROM tb_laporan";
 	//Mendapatkan Hasil 
 	$result = mysqli_query($conn,$sql);
 	//Memasukkan Hasil Kedalam Array
 	$riwayat_keluhan = array();
     while($row = mysqli_fetch_assoc($result)){
+        $index['id'] = $row['id'];
         $index['keluhan'] = $row['keluhan'];
         $index['waktu'] = $row['waktu'];
         $index['tanggal'] = $row['tanggal'];

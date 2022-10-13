@@ -1,23 +1,23 @@
 <?php 
 	//Importing database    
     require '../functions.php';
-    //Ambil id_pelanggan
-    $keluhan = $_POST["keluhan"];
+    //Ambil id
+    $id = $_POST["id"];
 	
 	//Membuat SQL Query dengan pegawai yang ditentukan secara spesifik sesuai ID Pelanggan
-	$check = "SELECT * FROM tb_laporan WHERE keluhan = '$keluhan'";
+	$query = "SELECT * FROM tb_laporan WHERE id = '$id'";
 	//Mendapatkan Hasil 
-	$result = mysqli_query($conn,$check);
-
-    if(mysqli_num_rows($result) === 1){
-        $sql = "DELETE FROM tb_pelanggan WHERE keluhan = '$keluhan'";
+	$check = mysqli_query($conn,$query);
+    $result = array();
+    if(mysqli_num_rows($check) === 1){
+        $sql = "DELETE FROM tb_laporan WHERE id = '$id'";
         if(mysqli_query($conn,$sql)){
-            echo "Data Berhasil Dihapus!";
+            $result['state'] = "delete";
             echo json_encode($result);
         } else {
-            echo "Data Gagal Dihapus!";
+            echo "Data Berhasil Dihapus!";
         }
     } else {
-        echo "Data UnAvalable";
+        echo "Data Gagal Dihapus";
     }
 ?>

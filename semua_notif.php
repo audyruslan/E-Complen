@@ -8,13 +8,13 @@
     <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tabel Laporan Pelanggan</h1>
-    <p class="mb-4">Tabel Riwayat Laporan Keluhan Pelanggan E-Complaint.</p>
+    <h1 class="h3 mb-2 text-gray-800">Notifikasi Semua Laporan Pelanggan</h1>
+    <p class="mb-4">Semua Notifikasi Laporan Keluhan Gangguan Listrik.</p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tabel Laporan Pelanggan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Notifikasi Keluhan Pelanggan</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -25,14 +25,13 @@
                                     <th>Nama Pelanggan</th>
                                     <th>Waktu</th>
                                     <th>Tanggal</th>
-                                    <th>Type</th>
                                     <th>Keluhan</th>
-                                    <th>Aksi</th>
+                                    <th>Type</th>
                                 </tr>
                             </thead>
                             <?php
                                 $i = 1;
-                                $sql = mysqli_query($conn, "SELECT * FROM tb_pelanggan JOIN tb_laporan ON tb_pelanggan.id = tb_laporan.id_pelanggan");
+                                $sql = mysqli_query($conn, "SELECT * FROM tb_pelanggan JOIN tb_laporan ON tb_pelanggan.id = tb_laporan.id_pelanggan WHERE type = 'Keluhan'");
                                 while ($row = mysqli_fetch_assoc($sql)) {
                                 ?>
                                     <tr>
@@ -40,21 +39,8 @@
                                         <td><?= $row['nama']; ?></td>
                                         <td><?= $row['waktu']; ?></td>
                                         <td><?= tgl_indo($row['tanggal']); ?></td>
-                                        <?php 
-                                        if($row['type'] == "Selesai"){
-                                        ?>
-                                        <td><span class="badge badge-success"><?= $row['type']; ?></span></td>
-                                        <?php 
-                                            } else {
-                                        ?>
-                                        <td><span class="badge badge-danger"><?= $row['type']; ?></span></td>
-                                        <?php } ?>
                                         <td><?= $row['keluhan']; ?></td>
-                                        <td>
-                                            <a target="_blank" href="detail_laporan.php?id_pelanggan=<?= $row["id_pelanggan"]; ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> </a>
-                                            <a class="btn btn-success btn-sm ubah" data-toggle="modal" data-target="#EditModal<?= $row["id"]; ?>"><i class="fas fa-edit"></i> </a>
-                                            <a class="btn btn-danger btn-sm hapus_laporan" href="laporan/hapus.php?id=<?= $row["id"]; ?>"><i class="fas fa-trash"></i></a>
-                                        </td>
+                                        <td><span class="badge badge-danger"><?= $row['type']; ?></span></td>
                                     </tr>
 
                                     <!-- Edit Modal -->

@@ -150,10 +150,6 @@ if (isset($_POST["login"])) {
                                             Masuk
                                         </button>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="#">Lupa Password?</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

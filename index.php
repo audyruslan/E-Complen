@@ -79,7 +79,7 @@
             <h1>Layanan Pengaduan Gangguan Listrik Bersama <span>E-Complaint</span></h1>
             <h2>Melayani Gangguan Listrik Anda dengan Cepat.</h2>
             <div class="text-center text-lg-start">
-              <a target="_blank" href="login.php" class="btn-get-started scrollto">Mulai</a>
+              <a target="_blank" href="login.php" class="btn-get-started scrollto">Masuk</a>
             </div>
           </div>
         </div>
