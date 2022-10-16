@@ -5,7 +5,7 @@ require '../functions.php';
 
 //Mendapatkan Nilai Variable
 $id_pelanggan = $_POST['id_pelanggan'];
-$waktu = date("H:i:s");
+$waktu = date("H:i");
 $tanggal = date("Y-m-d");
 $type = "Keluhan";
 $keluhan = $_POST["keluhan"];
